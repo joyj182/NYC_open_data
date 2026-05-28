@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>NYC Open Data</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="helper.js"></script>
+    <script src="script.js"></script>
+   </head>
+
+
+
+<body onload="init()">
+    <div id="banner" class="container center">
+      <div style="text-align:center">
+          <h1>NYC Open Data</h1>
+          <h2>Filtering Police Arrests</h2>
+      </div>
+    </div>
+</body>
+
+ <div class="container">
+      <div id="leftPanel">
+        <!--Card below is the basic HTML to use for Challenge 1 and 3 -->
+        <div class="card">
+          <h3>SEARCH By Injuries and Street</h3>
+          <input type="text" id="street" class="text" placeholder="Enter Street name(ALL CAPS)">
+          <input type="text" id="injured" class="text" placeholder="Enter # people injured">
+          <hr></hr>
+          <a class="button" onclick="filterByInjuryAndStreet()"> Search </a>
+        </div>
+        <!--Challenge 1: Create another UI in order to filter by zip code. [See Challenge 2 in script.js] -->
+       <div class="card">
+          <h3>SEARCH By People injured</h3>
+          <input type="text" id="injured2" class="text" placeholder="Enter # people injured">
+          <hr></hr>
+          <a class="button" onclick="filterByInjured()"> Search </a>
+        </div>
+
+
+    <div id="output" class="container output"></div>
+    <div id="footer" class="container center">
+      <h3>NYC Open Data: Police Arrests</h3>
+    </div>
+</div>
+</html>
