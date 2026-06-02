@@ -12,25 +12,35 @@
    </head>
 
 
-  <body onload="init()">
-    <div id="banner" class="container center">
+
+
+<body onload="init()">
+    <div id="banner2" class="container center">
       <div style="text-align:center">
           <h1>NYC Open Data</h1>
           <h2>Filtering Police Arrests</h2>
       </div>
     </div>
-  </body>
+</body>
 
-  <nav class="container">
+<nav class="container">
     <a href="index.html"> Home Page </a>
     <a href ="info.html"> Information </a>
-    <a href="anaylsis.html" > Analysis </a>
+    <a href="map.html" > Analysis </a>
   </nav>
-
-  <div class="container main"> </div>
-
-  <div id="footer" class="container center">
-    <h3>NYC Open Data: Police Arrests</h3>
+  <div class="card" id="leftPanel">
+        <h1>Police Arrests</h1>
+        <div id="result" class="container"></div>
   </div>
 
+ <div class="container">
+    <div id="rightPanel">
+      <div id="output" class="container"></div>
+      <div id="footer" class="container center">
+        <h3>NYC Open Data: Police Arrests</h3>
+      </div>
+    </div>
+
+   
+  </div>
 </html>
