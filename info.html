@@ -12,35 +12,38 @@
    </head>
 
 
-
-
-<body onload="init()">
+  <body onload="init()">
     <div id="banner2" class="container center">
       <div style="text-align:center">
           <h1>NYC Open Data</h1>
           <h2>Filtering Police Arrests</h2>
       </div>
     </div>
-</body>
+  </body>
 
-<nav class="container">
+  <nav class="container">
     <a href="index.html"> Home Page </a>
     <a href ="info.html"> Information </a>
-    <a href="map.html" > Analysis </a>
+    <a href="anaylsis.html" > Graph </a>
+    <a href="map.html"> Maps </a>
   </nav>
-  <div class="card" id="leftPanel">
-        <h1>Police Arrests</h1>
-        <div id="result" class="container"></div>
-  </div>
-
- <div class="container">
-    <div id="rightPanel">
-      <div id="output" class="container"></div>
-      <div id="footer" class="container center">
-        <h3>NYC Open Data: Police Arrests</h3>
+  
+  <div class="container">
+      <div id="leftPanel">
+        <!--<div class="card">
+          <h3>Filter By Race and Gender</h3>
+          <input type="text" id="agency" placeholder="Enter Issueing Agency">
+          <input type="text" id="agency" placeholder="Enter Issueing Agency">
+          <hr>
+          <a class="button" onclick="filterByIssueAgency()">Search</a>
+        </div>-->
       </div>
-    </div>
-
-   
+    
+      <div class="card" id="rightPanel">
+        <div id="output"></div>
+      </div>
   </div>
+  
+
+ <div id="footer" class="container center"></div>
 </html>

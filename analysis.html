@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Police Arrest Analysis</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="helper.js"></script>
+    <script src="script.js"></script>
+   </head>
+
+
+
+<body onload="init()">
+    <div id="banner" class="container center">
+      <div style="text-align:center">
+          <h1>NYC Open Data</h1>
+          <h2>Filtering Police Arrests</h2>
+      </div>
+    </div>
+</body>
+
+<nav class="container" id="links">
+    <a href="index.html"> Home Page </a>
+    <a href ="info.html"> Information </a>
+    <a href="anaylsis.html" > Graph </a>
+    <a href="map.html"> Maps </a>
+</nav>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css">
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js"></script>
+
+    <style>
+        body{
+            font-family: Arial;
+            margin:20px;
+        }
+
+        #chart{
+            margin-top:20px;
+        }
+
+        .analysis{
+            background:#f4f4f4;
+            padding:15px;
+            margin-top:20px;
+            border-radius:10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Police Arrest Analysis</h1>
+
+<label>Chart Type:</label>
+<select id="chartType">
+    <option value="bar">Bar Chart</option>
+    <option value="pie">Pie Chart</option>
+    <option value="donut">Donut Chart</option>
+</select>
+
+<label>Borough:</label>
+<select id="boroughFilter">
+    <option value="all">All Boroughs</option>
+    <option value="BROOKLYN">Brooklyn</option>
+    <option value="MANHATTAN">Manhattan</option>
+    <option value="BRONX">Bronx</option>
+    <option value="QUEENS">Queens</option>
+    <option value="STATEN ISLAND">Staten Island</option>
+</select>
+
+<button onclick="updateChart()">Apply Filter</button>
+
+<div id="chart"></div>
+
+<div class="analysis">
+    <h2>Analysis</h2>
+
+    <p id="analysisText">
+        This chart displays the number of arrests by borough. Comparing borough totals helps identify areas with higher arrest activity. Larger boroughs such as Brooklyn and Manhattan often show higher arrest counts due to larger populations and greater police activity.
+    </p>
+</div>
+
+<script>
+
+// Sample data
+let boroughData = {
+    "BROOKLYN": 450,
+    "MANHATTAN": 380,
+    "BRONX": 320,
+    "QUEENS": 280,
+    "STATEN ISLAND": 90
+};
+
+let chart;
+
+function createChart(type){
+
+    chart = c3.generate({
+        bindto:"#chart",
+
+        data:{
+            columns:[
+                ["Brooklyn", boroughData["BROOKLYN"]],
+                ["Manhattan", boroughData["MANHATTAN"]],
+                ["Bronx", boroughData["BRONX"]],
+                ["Queens", boroughData["QUEENS"]],
+                ["Staten Island", boroughData["STATEN ISLAND"]]
+            ],
+            type:type
+        }
+    });
+}
+
+function updateChart(){
+
+    let chartType =
+        document.getElementById("chartType").value;
+
+    let borough =
+        document.getElementById("boroughFilter").value;
+
+    let columns = [];
+
+    if(borough == "all"){
+        columns = [
+            ["Brooklyn", boroughData["BROOKLYN"]],
+            ["Manhattan", boroughData["MANHATTAN"]],
+            ["Bronx", boroughData["BRONX"]],
+            ["Queens", boroughData["QUEENS"]],
+            ["Staten Island", boroughData["STATEN ISLAND"]]
+        ];
+
+        document.getElementById("analysisText").innerHTML =
+        "This chart compares arrest totals across all boroughs. Brooklyn currently has the highest arrest count in this sample dataset.";
+    }
+    else{
+
+        columns = [
+            [borough, boroughData[borough]]
+        ];
+
+        document.getElementById("analysisText").innerHTML =
+        "The selected borough is " + borough +
+        ". This filter allows users to focus on a specific area and compare it with overall city trends.";
+    }
+
+    chart.destroy();
+
+    chart = c3.generate({
+        bindto:"#chart",
+
+        data:{
+            columns:columns,
+            type:chartType
+        },
+
+        zoom:{
+            enabled:true
+        }
+    });
+}
+
+createChart("bar");
+
+</script>
+
+</body>
+</html>
