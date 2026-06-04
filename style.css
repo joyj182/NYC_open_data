@@ -1,6 +1,8 @@
+
+/* ALL */
 html,body{
   margin:0 auto;
-  font-family:Arial;
+  font-family:system-ui; 
 }
 .container{
   display:flex;
@@ -23,10 +25,11 @@ nav a{
 }
 nav a:hover{
   color:white;
+  border-bottom: 2px solid rgb(230, 199, 28) 
 }
-.subbanner{
-  background-color:cornflowerblue;
-}
+
+/* Page 1: Home PAge */
+
 #banner{
   background-color:blue;
   color:white;
@@ -40,6 +43,22 @@ nav a:hover{
   bottom:0px;
 }
  
+/* Page 2 */
+
+#banner2{
+  background-color:blue;
+  color:white;
+}
+#footer{
+  background-color:cornflowerblue;
+  color:white;
+  /*position:fixed;*/
+  left: 0;
+  right: 0;
+  bottom:0px;
+}
+
+
 .card{
   flex:1;
   margin:10px;
@@ -54,38 +73,51 @@ nav a:hover{
   font-style:italic;
   color:blue;
 }
+
 .heading{
   font-weight:bold;
 }
+
 .button{
   text-decoration:none;
   background-color:blue;
   color:white;
   border-radius:4px;
   padding:6px;
-  box-shadow:2px 2px 2px black;
+  box-shadow:2px 2px 2px rgb(31, 31, 30);
 }
+
 .button:hover{
   background-color:cornflowerblue;
 }
-.flex-1{
-  flex:1;
-}
+
 .fitted{
   max-width:200px;
   min-width:200px;
 }
+
 .card img{
-  height:100px;
+  height:100px; 
 }
+
 #output{
   display:flex;
   flex-wrap:wrap;
+  font-size: smaller;
+  align-items: center;
+}
+
+#output :hover{
+  background-color: slategray;
 }
 
 #leftPanel{
   flex:1;
 }
+
 #rightPanel{
   flex:2;
+  background-color: rgb(26, 26, 80);
+  color: white;
 }
+
