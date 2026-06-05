@@ -30,21 +30,22 @@
   
   <div class="container">
       <div id="leftPanel">
-        <!--<div class="card">
+      <div class="card">
           <h3>Filter By Race and Gender</h3>
-          <input type="text" id="x" placeholder="Enter Gender">
-          <input type="text" id="x" placeholder="Enter Race">
+          <input type="text" id="gender" placeholder="Enter Gender(Initial ONLY)">
+          <input type="text" id="race" placeholder="Enter Race(ALL CAPS)">
           <hr>
-          <a class="button" onclick="filterByIssueAgency()">Search</a>
-        </div>-->
+          <a class="button" onclick="filterByGenderRace()">Search</a>
+        </div>
       </div>
     
       <div class="card" id="rightPanel">
         <h3>Police Arrests Data</h3>
+        <div id="result"><h1>Result</h1></div>
         <div id="output"></div>
       </div>
   </div>
   
 
- <div id="footer" class="container center"></div>
+ <div id="footer2" class="container center"></div>
 </html>
