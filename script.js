@@ -1,5 +1,30 @@
-let data, info;
+let data, info, mapObj;
 
+function showMap(lat,lon){
+  let location = [lat, lon];
+  //Line below needed to create the map object once.
+  if(!mapObj){
+      mapObj = L.map("map");
+  } 
+  let map = mapObj.setView(location, 18);// [lat, lon], zoom
+
+  const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 18,
+    attribution: "&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+  }).addTo(map);
+
+  let marker = L.marker(location).addTo(map);// places marker on map
+}
+
+/*function displayMap(){
+ 
+  let lat = document.getElementById("lat").value;
+  let lon = document.getElementById("lon").value;
+
+  showMap(lat,lon);
+  
+}
+*/
 async function init(){   
   let link = "arrest.json";
   info = await fetch(link);
@@ -18,30 +43,16 @@ async function init(){
                 <p>${arrest.perp_race} </p>
                 <p>${arrest.age_group}</p>
                 <hr>
-                <p>${arrest.law_code}</p>
-              </div>` ;
-              if(info.latitude && info.longitude){
+                <p>${arrest.law_code}</p>`
+              if(arrest.latitude && arrest.longitude){
                     build += `<input type="button" value="Map" onclick="showMap( ${arrest.latitude}, ${arrest.longitude} )">`;
                   };   
+          build+= `</div>`;
   }
   output.innerHTML = build;
 }
 
-function showMap(lat,lon){
-  let location = [lat, lon];
-  //Line below needed to create the map object once.
-  if(!mapObj){
-      mapObj = L.map("map");
-  } 
-  let map = mapObj.setView(location, 18);// [lat, lon], zoom
 
-  const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 18,
-    attribution: "&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
-  }).addTo(map);
-
-  let marker = L.marker(location).addTo(map);// places marker on map
-}
 
 
 function filterByGenderRace(){
@@ -100,13 +111,6 @@ function filterByAge(){
   output.innerHTML = build; 
 }
 
-function displayMap(){
-  //Retrieve the latitude & longitude from the user via text inputs and pass it to the showMap() function to generate the map and display it.
-  let lat = get("lat").value;
-  let lon = get("lon").value;
 
-  showMap(lat,lon);
-  
-}
 
 

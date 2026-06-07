@@ -154,6 +154,11 @@ nav a:hover{
   color: white;
 }
 
+#map{
+    height:500px;
+    width:100%;
+}
+
 /* Page 3 */
 
 #banner3{
