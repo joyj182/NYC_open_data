@@ -61,6 +61,16 @@ nav a:hover{
   flex-wrap:wrap;
 }
 
+#facts{
+  padding-top: 30px;
+}
+
+#facts img{
+  height: 300px;
+  width: 500px;
+  border-radius: 5px;
+  padding-right: 20px;
+}
 /* Page 2 */
 
 #banner2{
