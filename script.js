@@ -19,10 +19,30 @@ async function init(){
                 <p>${arrest.age_group}</p>
                 <hr>
                 <p>${arrest.law_code}</p>
-              </div>` ;   
+              </div>` ;
+              if(info.latitude && info.longitude){
+                    build += `<input type="button" value="Map" onclick="showMap( ${arrest.latitude}, ${arrest.longitude} )">`;
+                  };   
   }
   output.innerHTML = build;
 }
+
+function showMap(lat,lon){
+  let location = [lat, lon];
+  //Line below needed to create the map object once.
+  if(!mapObj){
+      mapObj = L.map("map");
+  } 
+  let map = mapObj.setView(location, 18);// [lat, lon], zoom
+
+  const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 18,
+    attribution: "&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+  }).addTo(map);
+
+  let marker = L.marker(location).addTo(map);// places marker on map
+}
+
 
 function filterByGenderRace(){
   let output = document.getElementById("output");
@@ -52,8 +72,8 @@ function filterByGenderRace(){
   result.innerHTML = `${ct} Results found.`;
   output.innerHTML = build; 
 }
-/*
-function searchByAge(){
+
+function filterByAge(){
     let age = document.getElementById("age").value;
     let result = document.getElementById("result");
   
@@ -62,7 +82,7 @@ function searchByAge(){
 
     for(let i = 0; i < data.length; i+=1){
     let arrest = data[i];
-    if(arrest.perp_sex == g && arrest.perp_race == r){
+    if(arrest.age_group == age){
       build += `<div class="fitted card">
                 <h1>${arrest.ofns_desc}</h1>
                 <h3>${arrest.arrest_key}</h3>
@@ -79,4 +99,14 @@ function searchByAge(){
   result.innerHTML = `${ct} Results found.`;
   output.innerHTML = build; 
 }
-    */
+
+function displayMap(){
+  //Retrieve the latitude & longitude from the user via text inputs and pass it to the showMap() function to generate the map and display it.
+  let lat = get("lat").value;
+  let lon = get("lon").value;
+
+  showMap(lat,lon);
+  
+}
+
+
