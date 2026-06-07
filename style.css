@@ -144,3 +144,9 @@ nav a:hover{
   color: white;
 }
 
+/* Page 3 */
+
+#banner3{
+  background-color:rgb(26, 26, 80);
+  color:yellow;
+}

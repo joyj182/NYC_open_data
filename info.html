@@ -24,27 +24,47 @@
   <nav class="container">
     <a href="index.html"> Home Page </a>
     <a href ="info.html"> Information </a>
-    <a href="anaylsis.html" > Graph </a>
+    <a href="analysis.html" > Graph </a>
     <a href="map.html"> Maps </a>
   </nav>
   
   <div class="container">
-      <div id="leftPanel">
+    <div id="leftPanel">
       <div class="card">
           <h3>Filter By Race and Gender</h3>
           <input type="text" id="gender" placeholder="Enter Gender(Initial ONLY)">
           <input type="text" id="race" placeholder="Enter Race(ALL CAPS)">
           <hr>
           <a class="button" onclick="filterByGenderRace()">Search</a>
-        </div>
       </div>
+    <div class="card">
+      <h3> Search by Age </h3>
+        <select id="age">
+          <option value="all">All Ages</option>
+          <option value="<18">Under 18</option>
+          <option value="18-24">18-24</option>
+          <option value="25-44">25-44</option>
+          <option value="45-64">45-64</option>
+          <option value="65+">65+</option>
+        </select> 
+        <hr>
+        <a class="button" onclick="filterByAge()"> Search</a>
+    
+    </div>
+      </div>
+      
     
       <div class="card" id="rightPanel">
         <h3>Police Arrests Data</h3>
         <div id="result"><h1>Result</h1></div>
         <div id="output"></div>
       </div>
-  </div>
+  
+</div>  
+
+     
+
+  
   
 
  <div id="footer2" class="container center"></div>
