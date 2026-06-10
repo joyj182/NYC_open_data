@@ -107,6 +107,7 @@ nav a:hover{
   justify-content: center;
   background-color: rgba(77, 114, 163, 0.63);
 }
+
 /* Page 2 */
 
 #banner2{
@@ -135,6 +136,8 @@ nav a:hover{
   box-shadow:2px 2px 2px black;
   border-radius:2px;
 }
+
+
 
 .highlight{
   font-style:italic;
@@ -186,7 +189,7 @@ nav a:hover{
 
 #rightPanel{
   flex:2;
-  background-color: rgb(26, 26, 80);
+  background-color: rgb(22, 22, 51);
   color: white;
 }
 
