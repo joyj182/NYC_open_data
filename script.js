@@ -31,9 +31,9 @@ async function init(){
                 <h1>${arrest.ofns_desc }</h1>
                 <h3>${arrest.arrest_key}</h3>
                 <hr>
-                <p>${arrest.perp_sex}</p>
-                <p>${arrest.perp_race} </p>
-                <p>${arrest.age_group}</p>
+                <p>Gender: ${arrest.perp_sex}</p>
+                <p>Race: ${arrest.perp_race} </p>
+                <p>Age: ${arrest.age_group}</p>
                 <hr>
                 <p>${arrest.law_code}</p>`
               if(arrest.latitude && arrest.longitude){
@@ -43,8 +43,6 @@ async function init(){
   }
   output.innerHTML = build;
 }
-
-
 
 
 function filterByGenderRace(){
@@ -63,12 +61,15 @@ function filterByGenderRace(){
                 <h1>${arrest.ofns_desc}</h1>
                 <h3>${arrest.arrest_key}</h3>
                 <hr>
-                <p>${arrest.perp_sex}</p>
-                <p>${arrest.perp_race} </p>
-                <p>${arrest.age_group}</p>
+                <p>Gender: ${arrest.perp_sex}</p>
+                <p>Race: ${arrest.perp_race} </p>
+                <p>Age: ${arrest.age_group}</p>
                 <hr>
-                <p>${arrest.law_code}</p>
-              </div>` ; 
+                <p>${arrest.law_code}</p>` ; 
+                if(arrest.latitude && arrest.longitude){
+                    build += `<input type="button" value="Map" onclick="showMap( ${arrest.latitude}, ${arrest.longitude} )">`;
+                  };   
+          build+= `</div>`;
       ct += 1;        
     }
   }
@@ -90,18 +91,53 @@ function filterByAge(){
                 <h1>${arrest.ofns_desc}</h1>
                 <h3>${arrest.arrest_key}</h3>
                 <hr>
-                <p>${arrest.perp_sex}</p>
-                <p>${arrest.perp_race} </p>
-                <p>${arrest.age_group}</p>
+                <p>Gender: ${arrest.perp_sex}</p>
+                <p>Race: ${arrest.perp_race} </p>
+                <p>Age: ${arrest.age_group}</p>
                 <hr>
-                <p>${arrest.law_code}</p>
-              </div>` ; 
+                <p>${arrest.law_code}</p>` 
+                if(arrest.latitude && arrest.longitude){
+                    build += `<input type="button" value="Map" onclick="showMap( ${arrest.latitude}, ${arrest.longitude} )">`;
+                  };   
+          build+= `</div>`;; 
       ct += 1;        
     }
   }
   result.innerHTML = `${ct} Results found.`;
   output.innerHTML = build; 
 }
+
+
+function filterByOffense(){
+    let of = document.getElementById("offense").value;
+    let result = document.getElementById("result");
+  
+    let build = "";
+    let ct = 0;
+
+    for(let i = 0; i < data.length; i+=1){
+    let arrest = data[i];
+    if(arrest.ofns_desc == of){
+      build += `<div class="fitted card">
+                <h1>${arrest.ofns_desc}</h1>
+                <h3>${arrest.arrest_key}</h3>
+                <hr>
+                <p>Gender: ${arrest.perp_sex}</p>
+                <p>Race: ${arrest.perp_race} </p>
+                <p>Age: ${arrest.age_group}</p>
+                <hr>
+                <p>${arrest.law_code}</p>` 
+                if(arrest.latitude && arrest.longitude){
+                    build += `<input type="button" value="Map" onclick="showMap( ${arrest.latitude}, ${arrest.longitude} )">`;
+                  };   
+          build+= `</div>`;; 
+      ct += 1;        
+    }
+  }
+  result.innerHTML = `${ct} Results found.`;
+  output.innerHTML = build; 
+}
+
 
 
 
