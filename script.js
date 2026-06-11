@@ -16,15 +16,7 @@ function showMap(lat,lon){
   let marker = L.marker(location).addTo(map);// places marker on map
 }
 
-/*function displayMap(){
- 
-  let lat = document.getElementById("lat").value;
-  let lon = document.getElementById("lon").value;
 
-  showMap(lat,lon);
-  
-}
-*/
 async function init(){   
   let link = "arrest.json";
   info = await fetch(link);

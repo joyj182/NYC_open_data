@@ -99,8 +99,12 @@ nav a:hover{
   display:flex;
   flex-wrap:wrap;
   color: white;
-  width: 600px;
-  height: 300px;
+  width: 700px;
+  height: 500px;
+}
+
+#b a{
+  color: yellow;
 }
 #about{
   padding-top: 30px;
