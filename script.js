@@ -138,6 +138,35 @@ function filterByOffense(){
   output.innerHTML = build; 
 }
 
+function updateChart() {
+
+    let chartType = document.getElementById("chartType").value;
+
+    let columns = [
+        ["<18", boroughData["<18"]],
+        ["18-24", boroughData["18-24"]],
+        ["25-44", boroughData["25-44"]],
+        ["45-64", boroughData["45-64"]]
+    ];
+
+    document.getElementById("analysisText").innerHTML =
+        "This chart compares arrest counts by age group. The 18-24 age group currently has the highest arrest count in this sample dataset.";
+
+    chart.destroy();
+
+    chart = c3.generate({
+        bindto: "#chart",
+
+        data: {
+            columns: columns,
+            type: chartType
+        },
+
+        donut: {
+            title: "Arrests"
+        }
+    });
+}
 
 
 
